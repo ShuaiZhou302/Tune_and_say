@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent real-time auto tune clip microphone</title>
+    <link rel="stylesheet" href="css/start.css">
+    <!--suppress JSUnresolvedLibraryURL -->
+    <script src="https://juce.backend/host.js"></script>
+    <style>
+        body {
+            background-color: #2F4F4F; /* 背景颜色 */
+        }
+    </style>
+</head>
+<body>
+
+<!-- 旋钮容器 -->
+<div class="knob-wrapper">
+    <div class="knob-container" id="knob-container1">
+        <div class="knob-label">Intensity of the sound modification</div>
+        <div class="knob-wrapper-inner">
+            <div class="knob" id="knob1"></div> <!-- 给第一个旋钮加上id -->
+        </div>
+        <div class="knob-angle" id="knob1-angle">Angle: 0°</div>
+    </div>
+
+    <div class="knob-container" id="knob-container2">
+        <div class="knob-label">Sound direction adjustment</div>
+        <div class="knob-wrapper-inner">
+            <div class="knob" id="knob2"></div> <!-- 给第二个旋钮加上id -->
+        </div>
+        <div class="knob-angle" id="knob2-angle">Angle: 0°</div>
+    </div>
+</div>
+
+<!-- 音量滑块容器3 -->
+<label class="slider">
+    <input type="range" class="level" min="0" max="100" value="50">
+    <svg class="volume" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+         width="40" height="40" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+         xml:space="preserve">
+        <g>
+            <path d="M18.36 19.36a1 1 0 0 1-.705-1.71C19.167 16.148 20 14.142 20 12s-.833-4.148-2.345-5.65a1 1 0 1 1 1.41-1.419C20.958 6.812 22 9.322 22 12s-1.042 5.188-2.935 7.069a.997.997 0 0 1-.705.291z"
+                  fill="currentColor" data-original="#000000"></path>
+            <path d="M15.53 16.53a.999.999 0 0 1-.703-1.711C15.572 14.082 16 13.054 16 12s-.428-2.082-1.173-2.819a1 1 0 1 1 1.406-1.422A6 6 0 0 1 18 12a6 6 0 0 1-1.767 4.241.996.996 0 0 1-.703.289zM12 22a1 1 0 0 1-.707-.293L6.586 17H4c-1.103 0-2-.897-2-2V9c0-1.103.897-2 2-2h2.586l4.707-4.707A.998.998 0 0 1 13 3v18a1 1 0 0 1-1 1z"
+                  fill="currentColor" data-original="#000000"></path>
+        </g>
+    </svg>
+    <!-- 显示音量数值 -->
+    <div class="volume-level">50%</div>
+</label>
+
+
+<!-- 播放暂停按钮2 -->
+<label class="container" id="startPauseBtn">
+    <input type="checkbox" id="playPauseToggle"/>
+    <svg viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="play">
+        <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path>
+    </svg>
+    <svg viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="pause">
+        <path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"></path>
+    </svg>
+</label>
+
+<!--<div id="micVisualizer" class="visualizer-container">
+  <canvas id="micCanvas" width="400" height="100"></canvas>
+</div>-->
+
+<!-- 音量可视化 -->
+<canvas id="volumeCanvas" width="550" height="60"></canvas>
+<!-- 频谱图 -->
+<canvas id="spectrogramCanvas"></canvas>
+
+
+<!-- 音频输入选择2 -->
+<div class="audio-input-container">
+    <div class="customCheckBox" onclick="setHost('update.audio.inputList', true)">
+        <div class="inner">Check microphones</div>
+    </div>
+
+    <select id="audioInputListSelect" class="custom-select">
+        <!-- 这里可以根据需要添加更多的选项 -->
+    </select>
+    <div class="customCheckBox"
+         onclick="setHost('update.audio.openInputDevice', document.getElementById('audioInputListSelect').value)">
+        <div class="inner">Set</div>
+    </div>
+    <!--
+      <p>Current level: <span id="current-level">0</span></p>
+    -->
+</div>
+
+<!-- 电平转为音量显示 -->
+<div class="audio-level-display">
+    <p>Current level: <span id="current-level">0</span></p>
+    <canvas id="dynamicVolumeCanvas" width="100" height="300"></canvas>
+</div>
+
+<!-- 水印 -->
+<div class="s-container">
+  <span class="logo-bottom-text">
+    制作团队<br>
+    孙钦樟 刘浩宇 黄沛祺 <br>
+    杨轩一 <span class="gap">周</span>帅 林楷浩
+  </span>
+</div>
+
+<!-- 背景 -->
+<div class="h-container"></div>
+
+
+<script src="start.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+/* -------------------------------------复选框2------------------------------------ */
+
+/* From Uiverse.io by WhiteNervosa */
+.customCheckBoxHolder {
+    position: absolute; /* 使复选框容器绝对定位，便于调整 */
+    left: 50%; /* 设置水平位置在屏幕中心 */
+    transform: translateX(-50%); /* 将元素向左平移，使其水平居中 */
+    top: 65%; /* 可以根据需要调整此值来改变垂直位置 */
+    margin: 5px; /* 外边距 5px */
+    display: flex; /* 使用弹性布局 */
+}
+
+.customCheckBox {
+    width: fit-content; /* 宽度根据内容自动调整 */
+    position: relative; /* 设置为相对定位 */
+    overflow: hidden; /* 隐藏溢出的内容 */
+    cursor: pointer; /* 设置鼠标悬停时为可点击状态 */
+    user-select: none; /* 禁止文本选择 */
+    padding: 2px 8px; /* 设置内边距，垂直 2px，水平 8px */
+    background-color: rgba(0, 0, 0, 0.16); /* 设置背景色，使用 rgba 使其透明 */
+    border-radius: 0px; /* 设置圆角为 0，表示没有圆角 */
+    color: rgba(255, 255, 255, 0.7); /* 设置字体颜色，使用透明度为 0.7 的白色 */
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); /* 设置平滑的过渡动画效果 */
+    transition-duration: 300ms; /* 设置过渡动画时长为 300ms */
+    transition-property: color, background-color, box-shadow; /* 设置需要过渡的属性 */
+    display: flex; /* 使用弹性布局 */
+    height: 32px; /* 设置高度为 32px */
+    align-items: center; /* 设置子项在垂直方向上居中 */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px; /* 设置内外阴影效果 */
+    outline: none; /* 移除元素的轮廓线 */
+    justify-content: center; /* 设置子项在水平方向上居中 */
+    min-width: 55px; /* 设置最小宽度为 55px */
+}
+
+.customCheckBox:hover {
+    background-color: #2c2c2c; /* 鼠标悬停时设置背景色为深灰色 */
+    color: white; /* 设置文字颜色为白色 */
+    box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 设置鼠标悬停时的阴影效果 */
+}
+
+.customCheckBox .inner {
+    font-size: 18px; /* 设置字体大小为 18px */
+    font-weight: 900; /* 设置字体加粗 */
+    pointer-events: none; /* 禁止该元素的鼠标事件，避免影响交互 */
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); /* 设置平滑的过渡动画效果 */
+    transition-duration: 300ms; /* 设置过渡动画时长为 300ms */
+    transition-property: transform; /* 只对 transform 属性进行过渡动画 */
+    transform: translateY(0px); /* 设置初始的垂直位移为 0px */
+}
+
+.customCheckBox:hover .inner {
+    transform: translateY(-2px); /* 鼠标悬停时将内容垂直上移 2px */
+}
+
+.customCheckBoxWrapper:first-of-type .customCheckBox {
+    border-bottom-left-radius: 5px; /* 设置第一个复选框的左下角圆角为 5px */
+    border-top-left-radius: 5px; /* 设置第一个复选框的左上角圆角为 5px */
+    border-right: 0px; /* 设置右边框为 0px，移除右边框 */
+}
+
+.customCheckBoxWrapper:last-of-type .customCheckBox {
+    border-bottom-right-radius: 5px; /* 设置最后一个复选框的右下角圆角为 5px */
+    border-top-right-radius: 5px; /* 设置最后一个复选框的右上角圆角为 5px */
+    border-left: 0px; /* 设置左边框为 0px，移除左边框 */
+}
+
+.customCheckBoxInput {
+    display: none; /* 隐藏复选框输入框 */
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox {
+    background-color: #2d6737; /* 当复选框被选中时，设置背景颜色 */
+    color: white; /* 设置选中时字体颜色为白色 */
+    box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 设置选中时的阴影效果 */
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox .inner {
+    transform: translateY(-2px); /* 选中时将文本上移 2px */
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox:hover {
+    background-color: #34723f; /* 鼠标悬停时，选中状态的背景色变为绿色 */
+    box-shadow: rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 3px 6px 2px; /* 鼠标悬停时的阴影效果 */
+}
+
+.customCheckBoxWrapper .customCheckBox:hover .inner {
+    transform: translateY(-2px); /* 鼠标悬停时将文本上移 2px */
+}
+
+/* -------------------------------------开始界面------------------------------------ */
+/* From Uiverse.io by Smit-Prajapati */
+.card {
+    width: 600px;
+    height: 400px;
+    background: #2F4F4F;
+    position: absolute; /* 或者 fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: -1; /* 设置较低的 z-index 值，确保它在页面的底层 */
+    transition: all 0.5s ease-in-out;
+}
+
+.border {
+    position: absolute;
+    inset: 0px;
+    border: 2px solid #bd9f67;
+    opacity: 0;
+    transform: rotate(10deg);
+    transition: all 0.5s ease-in-out;
+}
+
+.bottom-text {
+    position: absolute;
+    left: 50%;
+    bottom: 13px;
+    transform: translateX(-50%);
+    font-size: 6px;
+    text-transform: uppercase;
+    padding: 0px 5px 0px 8px;
+    color: #bd9f67;
+    background: #243137;
+    opacity: 0;
+    letter-spacing: 7px;
+    transition: all 0.5s ease-in-out;
+    user-select: none; /* 禁止文本选择 */
+}
+
+.content {
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+}
+
+.center-text {
+    font-size: 30px; /* 增大字体 */
+    color: #bd9f67;
+    font-weight: bold;
+    line-height: 1.5;
+    position: absolute; /* 使用绝对定位 */
+    top: 20%; /* 根据需求调整位置 */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 精确地水平居中 */
+    user-select: none; /* 禁止文本选择 */
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+.logo-bottom-text {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    margin-top: 30px;
+    color: #bd9f67;
+    padding-left: 8px;
+    font-size: 11px;
+    opacity: 0;
+    letter-spacing: none;
+    transition: all 0.5s ease-in-out 0.5s;
+    user-select: none; /* 禁止文本选择 */
+}
+
+.card:hover {
+    border-radius: 0;
+    /*
+    transform: scale(1.1);
+    */
+    transform: translate(-50%, -50%) scale(1.1); /* 放大而不改变位置 */
+}
+
+.card:hover .border {
+    inset: 15px;
+    opacity: 1;
+    transform: rotate(0);
+}
+
+.card:hover .bottom-text {
+    letter-spacing: 3px;
+    opacity: 1;
+    transform: translateX(-50%);
+}
+
+.card:hover .logo-bottom-text {
+    opacity: 1;
+    letter-spacing: 9px;
+}
+
+@keyframes opacity {
+    0% {
+        border-right: 1px solid transparent;
+    }
+
+    10% {
+        border-right: 1px solid #bd9f67;
+    }
+
+    80% {
+        border-right: 1px solid #bd9f67;
+    }
+
+    100% {
+        border-right: 1px solid transparent;
+    }
+}
+
+@keyframes trail {
+    0% {
+        background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
+        opacity: 0;
+    }
+
+    30% {
+        background: linear-gradient(90deg, rgba(189, 159, 103, 0) 70%, rgb(189, 159, 103) 100%);
+        opacity: 1;
+    }
+
+    70% {
+        background: linear-gradient(90deg, rgba(189, 159, 103, 0) 70%, rgb(189, 159, 103) 100%);
+        opacity: 1;
+    }
+
+    95% {
+        background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
+        opacity: 0;
+    }
+}
+
+.gap {
+    margin-right: 9px; /* Create space between 周 and 帅 */
+}
+

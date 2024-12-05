@@ -1,0 +1,619 @@
+/* 页面基础样式 */
+body {
+  font-family: Arial, sans-serif; /* 设置页面字体 */
+  height: 100vh; /* 高度设置为视口高度 */
+  margin: 0; /* 去除页面默认的外边距 */
+  position: relative; /* 设置相对定位 */
+}
+/* -------------------------------------复选框2------------------------------------ */
+
+/* From Uiverse.io by WhiteNervosa */
+.customCheckBoxHolder {
+  position: absolute; /* 设置为绝对定位 */
+  top: 300px; /* 距离顶部 400px */
+  left: 50px; /* 距离左侧 50px */
+  margin: 5px; /* 外边距 5px */
+  display: flex; /* 使用弹性布局 */
+}
+
+.customCheckBox {
+  width: fit-content; /* 宽度根据内容自动调整 */
+  position: relative; /* 设置为相对定位 */
+  overflow: hidden; /* 隐藏溢出的内容 */
+  cursor: pointer; /* 设置鼠标悬停时为可点击状态 */
+  user-select: none; /* 禁止文本选择 */
+  padding: 2px 8px; /* 设置内边距，垂直 2px，水平 8px */
+  background-color: rgba(0, 0, 0, 0.16); /* 设置背景色，使用 rgba 使其透明 */
+  border-radius: 0px; /* 设置圆角为 0，表示没有圆角 */
+  color: rgba(255, 255, 255, 0.7); /* 设置字体颜色，使用透明度为 0.7 的白色 */
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); /* 设置平滑的过渡动画效果 */
+  transition-duration: 300ms; /* 设置过渡动画时长为 300ms */
+  transition-property: color, background-color, box-shadow; /* 设置需要过渡的属性 */
+  display: flex; /* 使用弹性布局 */
+  height: 32px; /* 设置高度为 32px */
+  align-items: center; /* 设置子项在垂直方向上居中 */
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px; /* 设置内外阴影效果 */
+  outline: none; /* 移除元素的轮廓线 */
+  justify-content: center; /* 设置子项在水平方向上居中 */
+  min-width: 55px; /* 设置最小宽度为 55px */
+}
+
+.customCheckBox:hover {
+  background-color: #2c2c2c; /* 鼠标悬停时设置背景色为深灰色 */
+  color: white; /* 设置文字颜色为白色 */
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 设置鼠标悬停时的阴影效果 */
+}
+
+.customCheckBox .inner {
+  font-size: 18px; /* 设置字体大小为 18px */
+  font-weight: 900; /* 设置字体加粗 */
+  pointer-events: none; /* 禁止该元素的鼠标事件，避免影响交互 */
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); /* 设置平滑的过渡动画效果 */
+  transition-duration: 300ms; /* 设置过渡动画时长为 300ms */
+  transition-property: transform; /* 只对 transform 属性进行过渡动画 */
+  transform: translateY(0px); /* 设置初始的垂直位移为 0px */
+}
+
+.customCheckBox:hover .inner {
+  transform: translateY(-2px); /* 鼠标悬停时将内容垂直上移 2px */
+}
+
+.customCheckBoxWrapper:first-of-type .customCheckBox {
+  border-bottom-left-radius: 5px; /* 设置第一个复选框的左下角圆角为 5px */
+  border-top-left-radius: 5px; /* 设置第一个复选框的左上角圆角为 5px */
+  border-right: 0px; /* 设置右边框为 0px，移除右边框 */
+}
+
+.customCheckBoxWrapper:last-of-type .customCheckBox {
+  border-bottom-right-radius: 5px; /* 设置最后一个复选框的右下角圆角为 5px */
+  border-top-right-radius: 5px; /* 设置最后一个复选框的右上角圆角为 5px */
+  border-left: 0px; /* 设置左边框为 0px，移除左边框 */
+}
+
+.customCheckBoxInput {
+  display: none; /* 隐藏复选框输入框 */
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox {
+  background-color: #2d6737; /* 当复选框被选中时，设置背景颜色 */
+  color: white; /* 设置选中时字体颜色为白色 */
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 设置选中时的阴影效果 */
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox .inner {
+  transform: translateY(-2px); /* 选中时将文本上移 2px */
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox:hover {
+  background-color: #34723f; /* 鼠标悬停时，选中状态的背景色变为绿色 */
+  box-shadow: rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 3px 6px 2px; /* 鼠标悬停时的阴影效果 */
+}
+
+.customCheckBoxWrapper .customCheckBox:hover .inner {
+  transform: translateY(-2px); /* 鼠标悬停时将文本上移 2px */
+}
+/* -------------------------------------旋钮------------------------------------ */
+
+/* 外层容器 */
+.knob-wrapper {
+  position: relative;
+  width: 100%; /* 占满父容器宽度 */
+  height: 300px; /* 容纳所有旋钮的高度 */
+}
+
+/* 方框容器 */
+.knob-container {
+  position: absolute;
+  display: flex; /* 水平排列 */
+  align-items: center; /* 垂直居中 */
+  justify-content: space-between; /* 左中右布局 */
+  width: 340px; /* 容器宽度 */
+  height: 15px; /* 容器高度 */
+  background-color: rgba(76, 175, 80, 0.3); /* 半透明绿色背景 */
+  border: none; /* 无边框 */
+  border-radius: 10px; /* 圆角 */
+  padding: 10px; /* 内边距 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 阴影 */
+}
+
+/* 定位第一个旋钮容器 */
+#knob-container1 {
+  top: 55px; /* 距顶部50px */
+  left: 20px; /* 距左侧100px */
+}
+
+/* 定位第二个旋钮容器 */
+#knob-container2 {
+  top: 95px; /* 距顶部150px */
+  left: 20px; /* 距左侧100px */
+}
+
+/* 左侧标签 */
+.knob-label {
+  flex: 1; /* 标签占据最大空间 */
+  font-size: 12px; /* 字体大小 */
+  font-weight: bold; /* 加粗 */
+  color: white; /* 白色文字 */
+  text-align: left; /* 左对齐 */
+  user-select: none; /* 禁用选择 */
+  padding-right: 10px; /* 标签与旋钮的间距 */
+}
+
+/* 旋钮和内部容器 */
+.knob-wrapper-inner {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  flex: 0; /* 固定大小 */
+}
+
+/* 旋钮样式 */
+.knob {
+  width: 25px; /* 25%大小 */
+  height: 25px;
+  background-color: #ccc;
+  border-radius: 50%; /* 圆形 */
+  cursor: pointer; /* 鼠标手形 */
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  position: relative; /* 以便容纳指针 */
+  transition: transform 0.1s ease; /* 缓动旋转 */
+  user-select: none; /* 禁用选择 */
+}
+
+/* 旋钮内部指针 */
+.knob::after {
+  content: '';
+  position: absolute;
+  top: 2.5px; /* 缩小后的指针位置 */
+  left: 50%;
+  width: 1.5px; /* 缩小后的指针宽度 */
+  height: 7.5px; /* 缩小后的指针高度 */
+  background-color: black;
+  border-radius: 1px;
+  transform: translateX(-50%);
+}
+
+/* 右侧角度显示 */
+.knob-angle {
+  flex: 0.4; /* 固定大小 */
+  font-size: 12px; /* 字体大小 */
+  font-weight: bold; /* 加粗 */
+  color: white; /* 白色文字 */
+  user-select: none; /* 禁用选择 */
+  margin-left: 15px; /* 旋钮与角度显示的间距 */
+  white-space: nowrap; /* 强制单行显示 */
+}
+
+/* ------------------------------------- 音量滑块3 ------------------------------------ */
+/* From Uiverse.io by Galahhad */
+/* level settings 👇 */
+
+.slider {
+  /* slider */
+  --slider-width: 100%;
+  --slider-height: 6px;
+  --slider-bg: rgb(120, 120, 120); /* 修改为 rgb(120, 120, 120) */
+  --slider-border-radius: 999px;
+  /* level */
+  --level-color: #fff;
+  --level-transition-duration: .1s;
+  /* icon */
+  --icon-margin: 15px;
+  --icon-color: #fff; /* 保持白色，图标颜色 */
+  --icon-size: 40px;
+
+  position: absolute; /* 绝对定位 */
+  top: 435px; /* 根据需要修改 */
+  left: 150px; /* 根据需要修改 */
+  z-index: 10; /* 确保它位于其他内容之上 */
+
+  display: flex; /* 使用 flex 布局 */
+  align-items: center; /* 垂直居中 */
+}
+
+.slider .volume {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: var(--icon-margin); /* 图标与数字之间的间距 */
+  color: var(--icon-color); /* 使用白色 */
+  width: var(--icon-size);
+  height: auto;
+}
+
+.slider .level {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--slider-width);
+  height: var(--slider-height);
+  background: var(--slider-bg); /* 修改为 rgb(120, 120, 120) */
+  overflow: hidden;
+  border-radius: var(--slider-border-radius);
+  -webkit-transition: height var(--level-transition-duration);
+  -o-transition: height var(--level-transition-duration);
+  transition: height var(--level-transition-duration);
+  cursor: inherit;
+}
+
+.slider .level::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+  -webkit-box-shadow: -200px 0 0 200px var(--level-color);
+  box-shadow: -200px 0 0 200px var(--level-color);
+}
+
+.slider:hover .level {
+  height: calc(var(--slider-height) * 2);
+}
+
+/* 显示音量数值的样式 */
+.slider .volume-level {
+  font-size: 18px; /* 字体大小 */
+  color: #fff; /* 字体颜色 */
+  width: 100px; /* 固定宽度 */
+  text-align: left;
+  white-space: nowrap; /* 防止换行 */
+  user-select: none; /* 禁止文本选择 */
+}
+
+
+/* -------------------------------------音频输入选择2------------------------------------ */
+.customCheckBoxHolder {
+  position: absolute; /* 设置为绝对定位 */
+  top: 10px; /* 距离顶部 400px */
+  left: 20px; /* 距离左侧 50px */
+  margin: 5px; /* 外边距 5px */
+  display: flex; /* 使用弹性布局 */
+}
+
+.customCheckBox {
+  width: fit-content; /* 宽度根据内容自动调整 */
+  position: relative; /* 设置为相对定位 */
+  overflow: hidden; /* 隐藏溢出的内容 */
+  cursor: pointer; /* 设置鼠标悬停时为可点击状态 */
+  user-select: none; /* 禁止文本选择 */
+  padding: 2px 8px; /* 设置内边距，垂直 2px，水平 8px */
+  background-color: rgba(0, 0, 0, 0.16); /* 设置背景色，使用 rgba 使其透明 */
+  border-radius: 5px; /* 设置圆角为 5px */
+  color: rgba(255, 255, 255, 0.7); /* 设置字体颜色，使用透明度为 0.7 的白色 */
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); /* 设置平滑的过渡动画效果 */
+  transition-duration: 300ms; /* 设置过渡动画时长为 300ms */
+  transition-property: color, background-color, box-shadow; /* 设置需要过渡的属性 */
+  display: flex; /* 使用弹性布局 */
+  height: 32px; /* 设置高度为 32px */
+  align-items: center; /* 设置子项在垂直方向上居中 */
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px; /* 设置内外阴影效果 */
+  outline: none; /* 移除元素的轮廓线 */
+  justify-content: center; /* 设置子项在水平方向上居中 */
+  min-width: 100px; /* 增加最小宽度以适应文本 */
+}
+
+.customCheckBox:hover {
+  background-color: #2c2c2c; /* 鼠标悬停时设置背景色为深灰色 */
+  color: white; /* 设置文字颜色为白色 */
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 设置鼠标悬停时的阴影效果 */
+}
+
+.customCheckBox .inner {
+  font-size: 18px; /* 设置字体大小为 18px */
+  font-weight: 900; /* 设置字体加粗 */
+  pointer-events: none; /* 禁止该元素的鼠标事件，避免影响交互 */
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); /* 设置平滑的过渡动画效果 */
+  transition-duration: 300ms; /* 设置过渡动画时长为 300ms */
+  transition-property: transform; /* 只对 transform 属性进行过渡动画 */
+  transform: translateY(0px); /* 设置初始的垂直位移为 0px */
+}
+
+.customCheckBox:hover .inner {
+  transform: translateY(-2px); /* 鼠标悬停时将内容上移 2px */
+}
+
+.customCheckBox:active {
+  background-color: #2d6737; /* 鼠标点击时，设置背景颜色为绿色 */
+  color: white; /* 设置文字颜色为白色 */
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 设置点击时的阴影效果 */
+}
+
+.customCheckBox:active .inner {
+  transform: translateY(-2px); /* 点击时将文本上移 2px */
+}
+
+.audio-input-container {
+  display: flex; /* 使用弹性布局 */
+  flex-direction: column; /* 设置为垂直排列 */
+  gap: 10px; /* 使按钮之间有间隔 */
+  align-items: flex-start; /* 子项左对齐 */
+}
+
+/* -------------------------------------下拉选择框------------------------------------ */
+/* 容器样式：设置为横向排列 */
+/* 设置自定义下拉框容器为绝对定位 */
+.audio-input-container {
+  position: absolute; /* 设置为绝对定位 */
+  top: 10px; /* 设置容器距离顶部的距离 */
+  left: 20px; /* 设置容器距离左侧的距离 */
+  display: flex; /* 使用弹性布局 */
+  align-items: center; /* 垂直居中对齐 */
+  gap: 10px; /* 设置子元素之间的间隔为 10px */
+  flex-direction: row; /* 横向排列子元素 */
+}
+
+/* 自定义select下拉框样式 */
+.custom-select {
+  width: 200px; /* 设置宽度为 200px，大小可根据需要调整 */
+  padding: 0 12px; /* 设置左右内边距为 12px */
+  background-color: rgba(0, 0, 0, 0.16); /* 背景颜色，透明黑色 */
+  border: 2px solid rgba(0, 0, 0, 0.16); /* 边框颜色，透明黑色 */
+  border-radius: 5px; /* 设置边框圆角为 5px */
+  color: rgba(255, 255, 255, 0.7); /* 设置字体颜色为半透明的白色 */
+  font-size: 16px; /* 设置字体大小为 16px */
+  font-weight: 900; /* 设置字体加粗 */
+  cursor: pointer; /* 设置鼠标悬停时为可点击状态 */
+  outline: none; /* 去除默认的聚焦外框 */
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px; /* 设置阴影效果 */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 设置平滑过渡效果 */
+  height: 32px; /* 设置高度为 32px */
+  line-height: 32px; /* 设置行高等于高度，以便垂直居中 */
+  text-align: center; /* 设置文本水平居中 */
+  appearance: none; /* 移除浏览器默认的下拉框样式 */
+  -webkit-appearance: none; /* Safari浏览器的兼容样式，移除默认下拉框样式 */
+  position: relative; /* 设置相对定位，以便定位箭头 */
+  user-select: none; /* 禁止文本选择 */
+}
+
+/* 自定义下拉箭头 */
+.custom-select::after {
+  content: '▼'; /* 设置下拉箭头的字符 */
+  font-size: 12px; /* 设置箭头的字体大小 */
+  color: rgba(255, 255, 255, 0.7); /* 设置箭头的颜色为半透明白色 */
+  position: absolute; /* 绝对定位 */
+  right: 12px; /* 距离右侧 12px */
+  top: 50%; /* 垂直居中 */
+  transform: translateY(-50%); /* 通过偏移使箭头垂直居中 */
+  pointer-events: none; /* 禁用箭头的鼠标事件 */
+}
+
+/* 悬停时 */
+.custom-select:hover {
+  background-color: #2c2c2c; /* 悬停时设置背景色为深灰色 */
+  color: white; /* 设置字体颜色为白色 */
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 设置阴影效果 */
+}
+
+/* 激活点击时 */
+.custom-select:active {
+  background-color: #2d6737; /* 点击时设置背景色为绿色 */
+  color: white; /* 设置字体颜色为白色 */
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 设置点击时的阴影效果 */
+}
+
+/* 选项的样式 */
+.custom-select option {
+  background-color: rgba(0, 0, 0, 0.16); /* 设置选项的背景色 */
+  color: rgba(255, 255, 255, 0.7); /* 设置选项的字体颜色 */
+  padding: 8px; /* 设置选项的内边距 */
+  font-weight: 900; /* 设置选项字体加粗 */
+  border: none; /* 移除选项的默认边框 */
+  user-select: none; /* 禁止选项文本选择 */
+}
+
+/* 选中项的样式 */
+.custom-select option:checked {
+  background-color: #2d6737; /* 选中项的背景色为绿色 */
+  color: white; /* 选中项的字体颜色为白色 */
+}
+
+/* 聚焦时 */
+.custom-select:focus {
+  /* border-color: #34723f; 聚焦时的边框颜色（注释掉的部分） */
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px; /* 聚焦时的阴影效果 */
+  background-color: #333; /* 聚焦时的背景颜色为深灰色 */
+  color: white; /* 聚焦时的字体颜色为白色 */
+}
+
+/* -------------------------------------电平显示------------------------------------ */
+.audio-level-display {
+  margin-top: 10px; /* 添加按钮和当前电平显示之间的间距 */
+  font-size: 16px; /* 可选：根据需要调整字体大小 */
+  color: rgba(255, 255, 255, 0.7); /* 设置与配色方案匹配的颜色 */
+  text-align: left;
+  position: absolute;  /* 使电平显示的位置固定 */
+  top: 120px;  /* 根据需要调整电平显示的顶部位置 */
+  left: 30px;  /* 根据需要调整电平显示的左边位置 */
+  user-select: none; /* 禁用文本选择 */
+}
+
+/* -------------------------------------电平转为音量显示------------------------------------ */
+#audio-level-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#dynamicVolumeCanvas {
+  border: none;  /* 移除边框 */
+  position: absolute;  /* 使画布的定位固定 */
+  top:  -30px;  /* 根据需要调整画布的顶部位置 */
+  left: 565px;  /* 根据需要调整画布的左边位置 */
+}
+
+/* -------------------------------------播放暂停按钮2------------------------------------ */
+/* From Uiverse.io by bbaginuk */
+/*------ Settings ------*/
+/* 容器样式：设置为水平和垂直居中的弹性布局 */
+.container {
+  --color: #ffffff; /* 设置颜色变量为白色 */
+  --size: 22px; /* 设置字体大小为22px */
+  display: flex; /* 使用弹性布局 */
+  justify-content: center; /* 水平居中对齐 */
+  align-items: center; /* 垂直居中对齐 */
+  position: absolute; /* 设置绝对定位 */
+  top: 450px; /* 设置容器距顶部365px，通常用于定位到复选框下方 */
+  left: 80px; /* 设置容器距左侧80px，确保与复选框左对齐 */
+  cursor: pointer; /* 设置鼠标指针样式为可点击 */
+  font-size: var(--size); /* 使用变量 --size 设置字体大小 */
+  user-select: none; /* 禁止文本选择 */
+  fill: var(--color); /* 设置字体颜色为变量 --color 的值 */
+}
+
+/* 容器伪元素：设置圆圈背景 */
+.container::before {
+  content: ''; /* 伪元素不包含文本内容 */
+  position: absolute; /* 设置为绝对定位 */
+  width: 40px; /* 设置圆圈的宽度为 40px */
+  height: 40px; /* 设置圆圈的高度为 40px */
+  border-radius: 50%; /* 设置为圆形 */
+  background-color: rgba(76, 175, 80, 0.3); /* 设置圆圈的背景颜色为半透明绿色 */
+  z-index: -1; /* 将圆圈置于按钮下方 */
+}
+
+/* 播放图标样式 */
+.container .play {
+  position: absolute; /* 绝对定位 */
+  animation: keyframes-fill 0.3s; /* 设置动画，持续 0.3 秒 */
+  transform: translateX(2px); /* 将播放图标向右移动 2px */
+}
+
+/* 暂停图标样式 */
+.container .pause {
+  position: absolute; /* 绝对定位 */
+  display: none; /* 默认情况下，暂停图标隐藏 */
+  animation: keyframes-fill 0.3s; /* 设置动画，持续 0.3 秒 */
+}
+
+/* ------ 当复选框选中时，显示暂停图标，隐藏播放图标 ------ */
+.container input:checked ~ .play {
+  display: none; /* 复选框选中时，播放图标隐藏 */
+}
+
+.container input:checked ~ .pause {
+  display: block; /* 复选框选中时，暂停图标显示 */
+}
+
+/* ------ 隐藏默认的复选框样式 ------ */
+.container input {
+  position: absolute; /* 设置复选框的定位为绝对定位 */
+  opacity: 0; /* 隐藏复选框，透明度设置为 0 */
+  cursor: pointer; /* 设置鼠标指针为可点击状态 */
+  height: 0; /* 设置复选框的高度为 0 */
+  width: 0; /* 设置复选框的宽度为 0 */
+}
+
+/* ------ 动画：播放/暂停按钮的缩放效果 ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: scale(0.5); /* 动画开始时，元素缩小至50% */
+    opacity: 0; /* 动画开始时，元素透明度为 0 */
+  }
+
+  50% {
+    transform: scale(1.1); /* 动画进行到一半时，元素放大至 110% */
+  }
+}
+
+
+/* -------------------------------------音量可视化------------------------------------ */
+body {
+  font-family: Arial, sans-serif; /* 设置页面字体为 Arial 或无衬线字体 */
+  height: 100vh; /* 设置页面高度为视口高度 */
+  background-color: #f0f0f0; /* 设置页面背景颜色为浅灰色 */
+  margin: 0; /* 去除默认的 margin */
+  position: relative; /* 设置 body 的 position 为 relative，供子元素绝对定位 */
+}
+
+canvas {
+  position: absolute; /* 使用绝对定位 */
+  top: 180px; /* 设置画布距离页面顶部 150px */
+  left: 20px; /* 设置画布距离页面左侧 100px */
+  border: 1px solid #ccc; /* 设置画布的边框为 1 像素灰色实线 */
+}
+
+/* -------------------------------------频谱图------------------------------------ */
+/* 页面背景和布局 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+/* 频谱图画布样式 */
+#spectrogramCanvas {
+  position: absolute;
+  top: 260px; /* 根据需要设置位置 */
+  left: 20px; /* 根据需要设置位置 */
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  width: 550px;
+  height: 140px;
+}
+
+/* -------------------------------------水印------------------------------------ */
+.s-container {
+  position: absolute;
+  top: 55px;
+  left: 380px;
+  width: 200px;
+  height: 80px;
+  display: flex;
+  opacity: 0.2;
+  justify-content: center;
+  align-items: center;
+  background: repeating-conic-gradient(
+          from 30deg,
+          #0000 0 120deg,
+          var(--c3) 0 180deg
+  )
+  calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+  repeating-conic-gradient(
+          from 30deg,
+          var(--c1) 0 60deg,
+          var(--c2) 0 120deg,
+          var(--c3) 0 180deg
+  );
+  background-size: var(--s) calc(var(--s) * 0.577);}
+
+.logo-bottom-text {
+  position: absolute;
+  text-align: center;
+  color: #bd9f67;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  user-select: none; /* Prevent text selection */
+  line-height: 1.5; /* Adjust line height for spacing between lines */
+}
+
+.gap {
+  margin-right: 1em; /* Create space between 周 and 帅 */
+}
+
+/* -------------------------------------背景------------------------------------ */
+.h-container {
+  position: absolute;
+  top: 0;
+  opacity: 0.2;
+  z-index: -10; /* 设置较低的 z-index 值，确保它在页面的底层 */
+  width: 100%;
+  height: 100%;
+  --s: 200px; /* control the size */
+  --c1: #1d1d1d;
+  --c2: #4e4f51;
+  --c3: #3c3c3c;
+
+  background: repeating-conic-gradient(
+          from 30deg,
+          #0000 0 120deg,
+          var(--c3) 0 180deg
+  )
+  calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+  repeating-conic-gradient(
+          from 30deg,
+          var(--c1) 0 60deg,
+          var(--c2) 0 120deg,
+          var(--c3) 0 180deg
+  );
+  background-size: var(--s) calc(var(--s) * 0.577);
+}
